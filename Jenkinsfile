@@ -1,5 +1,3 @@
-
-
 pipeline {
     agent any
 
@@ -10,11 +8,12 @@ pipeline {
                 archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
             }
         }
-    }
     
-    stage ('unit test') {
-        steps {
-            sh "mvn test"
+    
+        stage ('unit test') {
+            steps {
+                sh "mvn test"
+            }
         }
     }
 }
