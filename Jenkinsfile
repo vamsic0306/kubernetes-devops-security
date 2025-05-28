@@ -23,9 +23,12 @@ pipeline {
         }
         stage('docker_Build_Stage') {
             steps {
-                sh 'printenv'
-                sh "docker build -t vamsidevdocker/devsec:${GIT_COMMIT} ."
-                sh "docker push vamsidevdocker/devsec:${GIT_COMMIT}"
+                withDockerRegistry([credentialsId: 'docker-hub', url: 'https://index.docker.io/v1/']) {
+                    
+                    sh 'printenv'
+                    sh "docker build -t vamsidevdocker/devsec:${GIT_COMMIT} ."
+                    sh "docker push vamsidevdocker/devsec:${GIT_COMMIT}"
+                }    
             
             }
         }
