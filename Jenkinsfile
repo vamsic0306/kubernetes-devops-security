@@ -21,5 +21,13 @@ pipeline {
                 }
             }
         }
+        stage('docker_Build_Stage') {
+            steps {
+                sh 'printenv'
+                sh 'sudo dockerbuild -t VamsiDevDocker/devsec: ""$GIT_COMMIT"" .'
+                sh 'sudo docker push VamsiDevDocker/devsec: ""$GIT_COMMIT"" .'
+            
+            }
+        }
     }
 }
