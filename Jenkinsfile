@@ -24,8 +24,8 @@ pipeline {
         stage('docker_Build_Stage') {
             steps {
                 sh 'printenv'
-                sh 'docker build -t VamsiDevDocker/devsec: ""$GIT_COMMIT"" .'
-                sh 'docker push VamsiDevDocker/devsec: ""$GIT_COMMIT"" .'
+                sh 'docker build -t VamsiDevDocker/devsec: ${GIT_COMMIT} .'
+                sh 'docker push VamsiDevDocker/devsec:${GIT_COMMIT}'
             
             }
         }
