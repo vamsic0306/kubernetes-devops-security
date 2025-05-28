@@ -23,7 +23,8 @@ pipeline {
         }
         stage('docker_Build_Stage') {
             steps {
-                withDockerRegistry([credentialsId: 'docker-hub', url: 'https://index.docker.io/v1/']) {
+           //   withDockerRegistry([credentialsId: 'docker-hub', url: 'https://index.docker.io/v1/']) {
+                withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
                     
                     sh 'printenv'
                     sh "docker build -t vamsidevdocker/devsec:${GIT_COMMIT} ."
